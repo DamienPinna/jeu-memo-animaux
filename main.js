@@ -14,9 +14,9 @@ const randowArrayGenerator = () => {
   let array = [];
   let arrayImages = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < gameBoard.length; i++) {
     let row = [];
-    for (let j = 0; j < 5; j++) {
+    for (let j = 0; j < gameBoard[0].length; j++) {
       let randowArrayGenerator = false;
       while (!randowArrayGenerator) {
         let randomImage = Math.floor(Math.random() * 10);
@@ -29,7 +29,6 @@ const randowArrayGenerator = () => {
     }
     array.push(row);
   }
-
   return array;
 };
 

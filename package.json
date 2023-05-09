@@ -1,0 +1,13 @@
+{
+  "name": "Jeu_memo_animaux",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/DamienPinna/jeu-memo-animaux.git",
+  "author": "Damien Pinna <damien.pinna@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "sass": "sass --watch ./design/sass/:./design/css/ --style expanded",
+    "prefix": "postcss ./design/css/style.css --use autoprefixer -d ./design/css/prefixed/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
