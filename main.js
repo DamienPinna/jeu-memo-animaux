@@ -1,4 +1,27 @@
 const content = document.querySelector("#content");
+const chronometer = document.getElementById("chronometer");
+
+let minutes = 0;
+let seconds = 0;
+
+chronometer.innerText = "00:00";
+
+const updateChronometer = () => {
+  seconds++;
+
+  if (seconds === 60) {
+    minutes++;
+    seconds = 0;
+  }
+
+  const formattedMinutes = minutes.toString().padStart(2, "0");
+  const formattedSeconds = seconds.toString().padStart(2, "0");
+
+  chronometer.innerText = `${formattedMinutes}:${formattedSeconds}`;
+};
+
+setInterval(updateChronometer, 1000);
+
 let odlSelection = [];
 let nbClick = 0;
 let canPlay = true;
@@ -80,7 +103,7 @@ const displayGameBoard = () => {
     text += "<div>";
     row.forEach((cell, indexColumn) => {
       if (cell === 0) {
-        text += `<button class='btn btn-primary m-2 p_size-card fs-4' onclick='checkCell(\"${indexRow}-${indexColumn}\")'>Dévoiler</button>`;
+        text += `<button class='item' onclick='checkCell(\"${indexRow}-${indexColumn}\")'><span class='text-item'>Dévoiler</span></button>`;
       } else {
         text += `<img src='${getImage(
           cell

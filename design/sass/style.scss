@@ -1,6 +1,39 @@
 @import "_mixins.scss";
 
-.p_size-card {
-  width: 150px;
-  height: 150px;
+.container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+#chronometer {
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.item {
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+  color: white;
+  border-radius: 10px;
+  margin: 3px;
+  vertical-align: middle;
+
+  .text-item {
+    display: none;
+  }
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  margin: 3px;
+  vertical-align: middle;
 }
