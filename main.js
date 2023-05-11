@@ -3,6 +3,7 @@ const chronometer = document.getElementById("chronometer");
 
 let minutes = 0;
 let seconds = 0;
+let intervalId;
 
 chronometer.innerText = "00:00";
 
@@ -20,7 +21,15 @@ const updateChronometer = () => {
   chronometer.innerText = `${formattedMinutes}:${formattedSeconds}`;
 };
 
-setInterval(updateChronometer, 1000);
+const startChronometer = () => {
+  intervalId = setInterval(updateChronometer, 1000);
+};
+
+const stopChronometer = () => {
+  clearInterval(intervalId);
+};
+
+startChronometer();
 
 let odlSelection = [];
 let nbClick = 0;
@@ -140,6 +149,9 @@ const checkCell = (cell) => {
         canPlay = true;
         nbClick = 0;
         odlSelection = [row, column];
+        if (!gameBoard.flat().includes(0)) {
+          stopChronometer();
+        }
       }, 1000);
     } else {
       odlSelection = [row, column];
