@@ -2,6 +2,7 @@ const content = document.querySelector("#content");
 const chronometer = document.querySelector("#chronometer");
 const modal = document.querySelector("#modal");
 const restart = document.querySelector(".restart");
+const record = document.querySelector(".record");
 
 let minutes = 0;
 let seconds = 0;
@@ -9,6 +10,7 @@ let intervalId;
 let odlSelection = [];
 let nbClick = 0;
 let canPlay = true;
+let score = 0;
 
 const gameBoard = [
   [0, 0, 0, 0, 0],
@@ -19,6 +21,14 @@ const gameBoard = [
 
 chronometer.innerText = "00:00";
 
+const formatScore = (secondsScore) => {
+  const minutes = Math.floor(secondsScore / 60);
+  const seconds = secondsScore % 60;
+  const formattedMinutes = String(minutes).padStart(2, "0");
+  const formattedSeconds = String(seconds).padStart(2, "0");
+  return `${formattedMinutes}:${formattedSeconds}`;
+};
+
 const updateChronometer = () => {
   seconds++;
 
@@ -27,8 +37,8 @@ const updateChronometer = () => {
     seconds = 0;
   }
 
-  const formattedMinutes = minutes.toString().padStart(2, "0");
-  const formattedSeconds = seconds.toString().padStart(2, "0");
+  const formattedMinutes = String(minutes).padStart(2, "0");
+  const formattedSeconds = String(seconds).padStart(2, "0");
 
   chronometer.innerText = `${formattedMinutes}:${formattedSeconds}`;
 };
@@ -153,8 +163,20 @@ const checkCell = (cell) => {
         canPlay = true;
         nbClick = 0;
         odlSelection = [row, column];
-        if (!gameBoard.flat().includes(0)) {
+        if (gameBoard.flat().includes(0)) {
           stopChronometer();
+          score = minutes * 60 + seconds;
+          let bestScore = localStorage.getItem("bestScoreMemoAnimauxDP");
+          bestScore = bestScore ? parseInt(bestScore) : 3600;
+
+          if (score < bestScore) {
+            bestScore = score;
+            localStorage.setItem("bestScoreMemoAnimauxDP", bestScore);
+          }
+
+          const formattedBestScore = formatScore(bestScore);
+          record.textContent = `Votre meilleur temps est ${formattedBestScore}`;
+
           viewModal();
         }
       }, 1000);
