@@ -1,5 +1,7 @@
 const content = document.querySelector("#content");
-const chronometer = document.getElementById("chronometer");
+const chronometer = document.querySelector("#chronometer");
+const modal = document.querySelector("#modal");
+const restart = document.querySelector(".restart");
 
 let minutes = 0;
 let seconds = 0;
@@ -124,6 +126,11 @@ const displayGameBoard = () => {
   content.innerHTML = text;
 };
 
+const viewModal = () => {
+  content.classList.add("hide");
+  modal.classList.remove("hide");
+};
+
 const checkCell = (cell) => {
   if (canPlay) {
     nbClick++;
@@ -148,6 +155,7 @@ const checkCell = (cell) => {
         odlSelection = [row, column];
         if (!gameBoard.flat().includes(0)) {
           stopChronometer();
+          viewModal();
         }
       }, 1000);
     } else {
@@ -157,3 +165,7 @@ const checkCell = (cell) => {
 };
 
 displayGameBoard();
+
+restart.addEventListener("click", () => {
+  location.reload();
+});

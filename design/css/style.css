@@ -23,6 +23,7 @@
   border-radius: 10px;
   margin: 3px;
   vertical-align: middle;
+  cursor: pointer;
 }
 .item .text-item {
   display: none;
@@ -33,6 +34,36 @@ img {
   height: 50px;
   margin: 3px;
   vertical-align: middle;
+}
+
+.restart {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.restart:hover {
+  background-color: #3e8e41;
+}
+.restart:active {
+  background-color: #4caf50;
+  transform: translateY(1px);
+}
+
+.win {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-top: 0px;
+}
+
+.hide {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
