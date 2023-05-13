@@ -4,6 +4,16 @@ const chronometer = document.getElementById("chronometer");
 let minutes = 0;
 let seconds = 0;
 let intervalId;
+let odlSelection = [];
+let nbClick = 0;
+let canPlay = true;
+
+const gameBoard = [
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+];
 
 chronometer.innerText = "00:00";
 
@@ -30,17 +40,6 @@ const stopChronometer = () => {
 };
 
 startChronometer();
-
-let odlSelection = [];
-let nbClick = 0;
-let canPlay = true;
-
-const gameBoard = [
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-];
 
 const randowArrayGenerator = () => {
   let array = [];
@@ -125,8 +124,6 @@ const displayGameBoard = () => {
   content.innerHTML = text;
 };
 
-displayGameBoard();
-
 const checkCell = (cell) => {
   if (canPlay) {
     nbClick++;
@@ -158,3 +155,5 @@ const checkCell = (cell) => {
     }
   }
 };
+
+displayGameBoard();
