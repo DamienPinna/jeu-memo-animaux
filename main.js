@@ -168,7 +168,7 @@ const checkCell = (cell) => {
         canPlay = true;
         nbClick = 0;
         odlSelection = [row, column];
-        if (gameBoard.flat().includes(0)) {
+        if (!gameBoard.flat().includes(0)) {
           stopChronometer();
           score = seconds;
           viewBestScore(score);
