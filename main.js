@@ -4,7 +4,6 @@ const modal = document.querySelector("#modal");
 const restart = document.querySelector(".restart");
 const record = document.querySelector(".record");
 
-let minutes = 0;
 let seconds = 0;
 let intervalId;
 let odlSelection = [];
@@ -21,7 +20,7 @@ const gameBoard = [
 
 chronometer.innerText = "00:00";
 
-const formatScore = (secondsScore) => {
+const formatTime = (secondsScore) => {
   const minutes = Math.floor(secondsScore / 60);
   const seconds = secondsScore % 60;
   const formattedMinutes = String(minutes).padStart(2, "0");
@@ -32,15 +31,8 @@ const formatScore = (secondsScore) => {
 const updateChronometer = () => {
   seconds++;
 
-  if (seconds === 60) {
-    minutes++;
-    seconds = 0;
-  }
-
-  const formattedMinutes = String(minutes).padStart(2, "0");
-  const formattedSeconds = String(seconds).padStart(2, "0");
-
-  chronometer.innerText = `${formattedMinutes}:${formattedSeconds}`;
+  const formattedTime = formatTime(seconds);
+  chronometer.innerText = `${formattedTime}`;
 };
 
 const startChronometer = () => {
@@ -163,9 +155,9 @@ const checkCell = (cell) => {
         canPlay = true;
         nbClick = 0;
         odlSelection = [row, column];
-        if (gameBoard.flat().includes(0)) {
+        if (!gameBoard.flat().includes(0)) {
           stopChronometer();
-          score = minutes * 60 + seconds;
+          score = seconds;
           let bestScore = localStorage.getItem("bestScoreMemoAnimauxDP");
           bestScore = bestScore ? parseInt(bestScore) : 3600;
 
@@ -174,7 +166,7 @@ const checkCell = (cell) => {
             localStorage.setItem("bestScoreMemoAnimauxDP", bestScore);
           }
 
-          const formattedBestScore = formatScore(bestScore);
+          const formattedBestScore = formatTime(bestScore);
           record.textContent = `Votre meilleur temps est ${formattedBestScore}`;
 
           viewModal();
