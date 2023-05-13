@@ -133,6 +133,19 @@ const viewModal = () => {
   modal.classList.remove("hide");
 };
 
+const viewBestScore = (score) => {
+  let bestScore = localStorage.getItem("bestScoreMemoAnimauxDP");
+  bestScore = bestScore ? parseInt(bestScore) : 3600;
+
+  if (score < bestScore) {
+    bestScore = score;
+    localStorage.setItem("bestScoreMemoAnimauxDP", bestScore);
+  }
+
+  const formattedBestScore = formatTime(bestScore);
+  record.textContent = `Votre meilleur temps est ${formattedBestScore}`;
+};
+
 const checkCell = (cell) => {
   if (canPlay) {
     nbClick++;
@@ -155,20 +168,10 @@ const checkCell = (cell) => {
         canPlay = true;
         nbClick = 0;
         odlSelection = [row, column];
-        if (!gameBoard.flat().includes(0)) {
+        if (gameBoard.flat().includes(0)) {
           stopChronometer();
           score = seconds;
-          let bestScore = localStorage.getItem("bestScoreMemoAnimauxDP");
-          bestScore = bestScore ? parseInt(bestScore) : 3600;
-
-          if (score < bestScore) {
-            bestScore = score;
-            localStorage.setItem("bestScoreMemoAnimauxDP", bestScore);
-          }
-
-          const formattedBestScore = formatTime(bestScore);
-          record.textContent = `Votre meilleur temps est ${formattedBestScore}`;
-
+          viewBestScore(score);
           viewModal();
         }
       }, 1000);
