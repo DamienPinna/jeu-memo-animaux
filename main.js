@@ -3,6 +3,7 @@ const chronometer = document.querySelector("#chronometer");
 const modal = document.querySelector("#modal");
 const restart = document.querySelector(".restart");
 const record = document.querySelector(".record");
+const message = document.querySelector(".message");
 
 let seconds = 0;
 let intervalId;
@@ -136,8 +137,13 @@ const viewBestScore = (score) => {
   bestScore = bestScore ? parseInt(bestScore) : 3600;
 
   if (score < bestScore) {
+    if (bestScore !== 3600) {
+      message.textContent = "Bravo ! Vous avez battu votre reccord !";
+    }
     bestScore = score;
     localStorage.setItem("bestScoreMemoAnimauxDP", bestScore);
+  } else {
+    message.textContent = "Rejouez pour tenter de battre votre record.";
   }
 
   const formattedBestScore = formatTime(bestScore);

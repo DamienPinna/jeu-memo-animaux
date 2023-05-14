@@ -119,6 +119,16 @@ img {
   }
 }
 
+.message {
+  @include breackpoint($tablette) {
+    font-size: 15px;
+  }
+
+  @include breackpoint($desktop) {
+    font-size: 20px;
+  }
+}
+
 .hide {
   display: none;
 }

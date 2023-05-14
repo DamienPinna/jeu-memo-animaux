@@ -122,6 +122,17 @@ img {
   }
 }
 
+@media screen and (min-width: 700px) {
+  .message {
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .message {
+    font-size: 20px;
+  }
+}
+
 .hide {
   display: none;
 }
