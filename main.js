@@ -18,8 +18,6 @@ const gameBoard = [
   [0, 0, 0, 0, 0],
 ];
 
-chronometer.innerText = "00:00";
-
 const formatTime = (secondsScore) => {
   const minutes = Math.floor(secondsScore / 60);
   const seconds = secondsScore % 60;
@@ -119,7 +117,7 @@ const displayGameBoard = () => {
       } else {
         text += `<img src='${getImage(
           cell
-        )}' alt='image' class='p_size-card m-2'/>`;
+        )}' alt='image' class='p_size-card'/>`;
       }
     });
     text += "</div>";

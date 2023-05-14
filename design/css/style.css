@@ -1,3 +1,7 @@
+body {
+  background-color: #f5f5f5;
+}
+
 .container {
   max-width: 1200px;
   margin: auto;
@@ -25,8 +29,31 @@
   vertical-align: middle;
   cursor: pointer;
 }
+@media screen and (min-width: 700px) {
+  .item {
+    width: 90px;
+    height: 90px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .item {
+    width: 145px;
+    height: 145px;
+  }
+}
 .item .text-item {
   display: none;
+}
+@media screen and (min-width: 700px) {
+  .item .text-item {
+    display: block;
+    font-size: 17px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .item .text-item {
+    font-size: 25px;
+  }
 }
 
 img {
@@ -34,6 +61,18 @@ img {
   height: 50px;
   margin: 3px;
   vertical-align: middle;
+}
+@media screen and (min-width: 700px) {
+  img {
+    width: 90px;
+    height: 90px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  img {
+    width: 145px;
+    height: 145px;
+  }
 }
 
 .restart {
@@ -60,6 +99,27 @@ img {
   font-weight: bold;
   color: #4caf50;
   margin-top: 0px;
+}
+@media screen and (min-width: 700px) {
+  .win {
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .win {
+    font-size: 35px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .record {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .record {
+    font-size: 25px;
+  }
 }
 
 .hide {
